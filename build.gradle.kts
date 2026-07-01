@@ -15,11 +15,11 @@ repositories {
 }
 
 dependencies {
-
     compileOnly("org.projectlombok:lombok:1.18.46")
     annotationProcessor("org.projectlombok:lombok:1.18.46")
 
     implementation(platform("com.fasterxml.jackson:jackson-bom:2.22.0"))
+    implementation("org.slf4j:slf4j-api:1.7.25")
 
     // Core Jackson libraries
     implementation("com.fasterxml.jackson.core:jackson-databind")

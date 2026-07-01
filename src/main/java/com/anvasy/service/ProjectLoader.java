@@ -1,14 +1,13 @@
 package com.anvasy.service;
 
-import com.anvasy.storage.ProjectRepository;
-
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class ProjectLoader {
 
-    //backend placeholder
-    public static void loadProject(ProjectRepository repository) throws IOException {
-            repository.load("./testdata/languages/");
+    public void createProject(Path folder) throws IOException {
+        Files.createDirectory(folder);
     }
 
     private void createFolderStructure(String path) {

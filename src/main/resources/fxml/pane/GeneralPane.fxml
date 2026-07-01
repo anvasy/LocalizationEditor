@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Button?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      alignment="TOP_CENTER" spacing="20">
+
+    <VBox>
+        <GridPane hgap="20" vgap="30">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+            </padding>
+
+            <columnConstraints>
+                <ColumnConstraints percentWidth="70"/>
+                <ColumnConstraints percentWidth="30"/>
+            </columnConstraints>
+
+            <Label text="New Project"
+                   GridPane.rowIndex="0"
+                   GridPane.columnIndex="0"
+                   styleClass="grid-text"/>
+
+            <Button text="Create"
+                    GridPane.rowIndex="0"
+                    GridPane.columnIndex="1"
+                    onAction="#showCreateProjectPane"/>
+
+            <Separator GridPane.rowIndex="1"
+                       GridPane.columnSpan="2"/>
+
+            <Label text="New Project"
+                   GridPane.rowIndex="2"
+                   GridPane.columnIndex="0"
+                   styleClass="grid-text"/>
+
+            <Button text="Create"
+                    GridPane.rowIndex="2"
+                    GridPane.columnIndex="1"
+                    onAction="#openProject"/>
+
+        </GridPane>
+    </VBox>
+
+    <VBox spacing="10">
+        <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+        </padding>
+        <Label text="Recent Projects:"/>
+        <ListView fx:id="recentProjects" prefHeight="200"/>
+    </VBox>
+
+</VBox>

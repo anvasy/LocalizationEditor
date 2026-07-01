@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.BorderPane?>
+
+<?import javafx.scene.layout.StackPane?>
+<BorderPane xmlns:fx="http://javafx.com"
+            fx:controller="com.anvasy.ui.controller.OpenProjectController"
+            prefHeight="500"
+            prefWidth="700"
+            stylesheets="@../../css/styles.css">
+
+    <top>
+        <VBox spacing="20" alignment="CENTER" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+            </padding>
+
+            <Label text="Welcome to Localization Editor" styleClass="title"/>
+            <Label text="A simple tool for localizations management" styleClass="subtitle"/>
+        </VBox>
+    </top>
+
+    <center>
+        <StackPane fx:id="contentPane"/>
+    </center>
+
+</BorderPane>

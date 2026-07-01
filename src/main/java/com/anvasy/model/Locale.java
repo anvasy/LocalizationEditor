@@ -1,4 +1,3 @@
 package com.anvasy.model;
 
-public enum Locale {
-}
+public record Locale (String code, String language, String region, String displayName) {}

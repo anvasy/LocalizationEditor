@@ -1,5 +1,6 @@
 package com.anvasy;
 
+import com.anvasy.ui.controller.OpenProjectController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,6 +21,9 @@ public class App extends Application {
                 new FXMLLoader(getClass().getResource("/fxml/OpenProjectView.fxml"));
 
         Parent root = loader.load();
+
+        OpenProjectController controller = loader.getController();
+        controller.setPrimaryStage(stage);
 
         Scene scene = new Scene(root);
 

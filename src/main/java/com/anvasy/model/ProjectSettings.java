@@ -6,6 +6,12 @@ import java.util.List;
 
 @Data
 public class ProjectSettings {
-    Locale primaryLocale;
-    List<Locale> projectLocales;
+    private String projectName;
+    private Locale primaryLocale;
+    private List<Locale> projectLocales;
+
+    public ProjectSettings(String projectName, Locale primaryLocale) {
+        this.projectName = projectName;
+        this.primaryLocale = primaryLocale;
+    }
 }
