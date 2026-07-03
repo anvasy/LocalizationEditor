@@ -7,7 +7,7 @@
 
 <?import javafx.scene.layout.StackPane?>
 <BorderPane xmlns:fx="http://javafx.com"
-            fx:controller="com.anvasy.ui.controller.OpenProjectController"
+            fx:controller="com.anvasy.ui.controller.WelcomeController"
             prefHeight="500"
             prefWidth="700"
             stylesheets="@../../css/styles.css">
@@ -24,7 +24,10 @@
     </top>
 
     <center>
-        <StackPane fx:id="contentPane"/>
+        <StackPane fx:id="contentPane" BorderPane.alignment="CENTER"/>
     </center>
 
+    <bottom>
+        <Label BorderPane.alignment="CENTER" text="ver 0.0.1.a"/>
+    </bottom>
 </BorderPane>

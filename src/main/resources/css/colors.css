@@ -1,0 +1,14 @@
+* {
+    -primary: #633f9c;
+    -primary-hover: #9067ff;
+
+    -background: #2a282b;
+    -card-color: #3e3e43;
+    -button-color: #333333;
+    -button-color-hover: #5c5c5c;
+
+    -text: #ececec;
+    -text-secondary: #919090;
+
+    -separator: #444444;
+}

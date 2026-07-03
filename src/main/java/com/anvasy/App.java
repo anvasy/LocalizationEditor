@@ -1,6 +1,6 @@
 package com.anvasy;
 
-import com.anvasy.ui.controller.OpenProjectController;
+import com.anvasy.ui.controller.WelcomeController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,12 +18,12 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader loader =
-                new FXMLLoader(getClass().getResource("/fxml/OpenProjectView.fxml"));
+                new FXMLLoader(getClass().getResource("/fxml/view/WelcomeView.fxml"));
 
         Parent root = loader.load();
 
-        OpenProjectController controller = loader.getController();
-        controller.setPrimaryStage(stage);
+        WelcomeController controller = loader.getController();
+        controller.initialize();
 
         Scene scene = new Scene(root);
 

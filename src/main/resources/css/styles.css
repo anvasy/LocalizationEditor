@@ -1,12 +1,61 @@
+@import "colors.css";
+
 .root {
-    -fx-background-color: #2a282b;
+    -fx-background-color: -background;
+    -fx-font-family: "Arial";
 }
 
 .title {
+    -fx-font-size: 42px;
+    -fx-font-weight: bold;
+    -fx-border-color: -text;
 }
 
 .subtitle {
+    -fx-font-size: 18px;
+}
+
+.card {
+    -fx-background-color: -card-color;
+
+    -fx-background-radius: 16;
+    -fx-border-radius: 16;
+
+    -fx-padding: 20;
+    -fx-spacing: 20;
+}
+
+.button {
+    -fx-background-color: -button-color;
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+}
+
+.button:hover {
+    -fx-background-color: -button-color-hover;
+}
+
+.text-field {
+
+}
+
+.text-field:focused {
+
+}
+
+.separator *.line {
+    -fx-border-color: -separator;
 }
 
 .grid-text {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -text;
+}
+
+.back-button {
+
+}
+
+.primary-button {
 }

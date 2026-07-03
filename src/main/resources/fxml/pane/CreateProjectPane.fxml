@@ -1,11 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.ColumnConstraints?>
 
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.anvasy.ui.controller.CreateProjectController"
       alignment="TOP_CENTER" spacing="20">
 
+    <Button text="← Back"
+            onAction="#showWelcome"
+            styleClass="back-button"/>
+
+    <VBox styleClass="card">
+        <GridPane hgap="20" vgap="30">
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+            </padding>
+
+            <columnConstraints>
+                <ColumnConstraints percentWidth="70"/>
+                <ColumnConstraints percentWidth="30"/>
+            </columnConstraints>
+
+            <Label text="Project Name"
+                   GridPane.rowIndex="0"
+                   GridPane.columnIndex="0"
+                   styleClass="grid-text"/>
+
+            <TextField fx:id="projectName"
+                       GridPane.rowIndex="0"
+                       GridPane.columnIndex="1"
+                       styleClass="text-field"/>
+
+            <Label text="Project Folder"
+                   GridPane.rowIndex="1"
+                   GridPane.columnIndex="0"
+                   styleClass="grid-text"/>
+
+            <Button text="Browse"
+                    GridPane.rowIndex="1"
+                    GridPane.columnIndex="1"
+                    onAction="#browseFolder"/>
+
+            <Label text="Default Locale"
+                   GridPane.rowIndex="2"
+                   GridPane.columnIndex="0"
+                   styleClass="grid-text"/>
+
+            <ComboBox fx:id="localeComboBox"
+                      GridPane.rowIndex="2"
+                      GridPane.columnIndex="1"/>
+
+        </GridPane>
+    </VBox>
+
+    <Button text="Create"
+            onAction="#createProject"
+            styleClass="primary-button"/>
 
 
 </VBox>

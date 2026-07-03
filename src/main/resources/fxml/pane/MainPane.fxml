@@ -11,9 +11,10 @@
 
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.anvasy.ui.controller.MainPaneController"
       alignment="TOP_CENTER" spacing="20">
 
-    <VBox>
+    <VBox styleClass="card">
         <GridPane hgap="20" vgap="30">
             <padding>
                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
@@ -32,17 +33,17 @@
             <Button text="Create"
                     GridPane.rowIndex="0"
                     GridPane.columnIndex="1"
-                    onAction="#showCreateProjectPane"/>
+                    onAction="#showCreateProject"/>
 
             <Separator GridPane.rowIndex="1"
                        GridPane.columnSpan="2"/>
 
-            <Label text="New Project"
+            <Label text="Open Project"
                    GridPane.rowIndex="2"
                    GridPane.columnIndex="0"
                    styleClass="grid-text"/>
 
-            <Button text="Create"
+            <Button text="Browse"
                     GridPane.rowIndex="2"
                     GridPane.columnIndex="1"
                     onAction="#openProject"/>
