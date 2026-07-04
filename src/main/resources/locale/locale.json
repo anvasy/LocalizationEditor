@@ -1,5 +1,11 @@
 [
   {
+    "code": "en-US",
+    "language": "English",
+    "region": "United States",
+    "displayName": "English (US)"
+  },
+  {
     "code": "ar-SA",
     "language": "Arabic",
     "region": "Saudi Arabia",
@@ -46,12 +52,6 @@
     "language": "English",
     "region": "United Kingdom",
     "displayName": "English (UK)"
-  },
-  {
-    "code": "en-US",
-    "language": "English",
-    "region": "United States",
-    "displayName": "English (US)"
   },
   {
     "code": "es-ES",

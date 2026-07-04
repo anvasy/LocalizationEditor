@@ -23,7 +23,7 @@ public class App extends Application {
         Parent root = loader.load();
 
         WelcomeController controller = loader.getController();
-        controller.initialize();
+        controller.initialize(stage);
 
         Scene scene = new Scene(root);
 

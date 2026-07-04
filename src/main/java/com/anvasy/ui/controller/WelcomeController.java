@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
@@ -11,11 +12,14 @@ import java.io.IOException;
 @Slf4j
 public class WelcomeController {
 
+    private Stage primaryStage;
+
     @FXML
     private StackPane contentPane;
 
     @FXML
-    public void initialize() {
+    public void initialize(Stage stage) {
+        this.primaryStage = stage;
         showWelcome();
     }
 
@@ -37,6 +41,7 @@ public class WelcomeController {
             Object controller = loader.getController();
             if (controller instanceof ControllerNavigator) {
                 ((ControllerNavigator) controller).setWelcomeController(this);
+                ((ControllerNavigator) controller).setStage(primaryStage);
             }
 
             contentPane.getChildren().setAll(view);

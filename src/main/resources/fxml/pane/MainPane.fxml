@@ -33,6 +33,7 @@
             <Button text="Create"
                     GridPane.rowIndex="0"
                     GridPane.columnIndex="1"
+                    styleClass="primary-button"
                     onAction="#showCreateProject"/>
 
             <Separator GridPane.rowIndex="1"
@@ -46,6 +47,7 @@
             <Button text="Browse"
                     GridPane.rowIndex="2"
                     GridPane.columnIndex="1"
+                    styleClass="button"
                     onAction="#openProject"/>
 
         </GridPane>

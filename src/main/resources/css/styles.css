@@ -8,7 +8,6 @@
 .title {
     -fx-font-size: 42px;
     -fx-font-weight: bold;
-    -fx-border-color: -text;
 }
 
 .subtitle {
@@ -54,8 +53,27 @@
 }
 
 .back-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: -text-secondary;
 
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+
+    -fx-padding: 8 12;
+    -fx-background-radius: 6;
+
+    -fx-cursor: hand;
+}
+
+.back-button:hover {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+.back-button:pressed {
+    -fx-background-color: transparent;
 }
 
 .primary-button {
+    -fx-background-color: -primary;
 }

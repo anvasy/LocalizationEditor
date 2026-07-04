@@ -7,6 +7,7 @@ import java.util.List;
 @Data
 public class ApplicationSettings {
     private Theme theme;
+    private String lastOpened;
     private List<String> recentProjects;
     private int autosaveInterval;
 }

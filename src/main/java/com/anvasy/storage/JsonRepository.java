@@ -1,7 +1,7 @@
 package com.anvasy.storage;
 
 import com.anvasy.model.LocalizationEntry;
-import com.anvasy.utils.FileUtils;
+import com.anvasy.utils.ProjectUtils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -21,8 +21,8 @@ public class JsonRepository implements ProjectRepository {
         Files.walkFileTree(Paths.get(dir), new SimpleFileVisitor<>() {
             @Override
             public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-                if (!Files.isDirectory(file) && FileUtils.validateFileName(file)) {
-                    readFileContents(Files.readString(file), locEntries, FileUtils.getLocaleFromFileName(file));
+                if (!Files.isDirectory(file) && ProjectUtils.validateFileName(file)) {
+                    readFileContents(Files.readString(file), locEntries, ProjectUtils.getLocaleFromFileName(file));
                 }
                 return FileVisitResult.CONTINUE;
             }
