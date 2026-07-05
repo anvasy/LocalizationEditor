@@ -16,7 +16,6 @@ import javafx.stage.DirectoryChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -55,9 +54,9 @@ public class CreateProjectController implements ControllerNavigator, Initializab
         directory.setText(selectedDirectory.getAbsolutePath());
     }
 
-    public void createProject() throws IOException {
+    public void createProject() throws Exception {
         new ProjectLoader().createProject(projectName.getText(), directory.getText(), localeComboBox.getValue()); //placeholder
-
+        primaryStage.close();
     }
 
     @Override

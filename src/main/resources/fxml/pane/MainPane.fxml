@@ -14,6 +14,10 @@
       fx:controller="com.anvasy.ui.controller.MainPaneController"
       alignment="TOP_CENTER" spacing="20">
 
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
     <VBox styleClass="card">
         <GridPane hgap="20" vgap="30">
             <padding>

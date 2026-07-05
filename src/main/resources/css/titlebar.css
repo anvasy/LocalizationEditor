@@ -1,0 +1,25 @@
+.title-bar {
+    -fx-background-color: #252526;
+    -fx-padding: 6 8 6 12;
+}
+
+.window-title {
+    -fx-text-fill: white;
+    -fx-font-size: 13px;
+}
+
+.window-close-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+
+    -fx-min-width: 34;
+    -fx-min-height: 28;
+    -fx-pref-width: 34;
+    -fx-pref-height: 28;
+
+    -fx-background-radius: 0;
+    -fx-cursor: hand;
+}

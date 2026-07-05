@@ -15,6 +15,10 @@
       fx:controller="com.anvasy.ui.controller.CreateProjectController"
       alignment="TOP_CENTER" spacing="20">
 
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
     <HBox alignment="CENTER_LEFT">
         <Button text="← Back"
                 onAction="#showWelcome"
@@ -46,12 +50,9 @@
                   GridPane.columnIndex="0">
                 <Label text="Project Folder"
                        styleClass="grid-text"/>
-                <Label fx:id="directory"/>
+                <Label fx:id="directory"
+                       styleClass="grid-text-sub"/>
             </VBox>
-            <!--<Label text="Project Folder"
-                   GridPane.rowIndex="1"
-                   GridPane.columnIndex="0"
-                   styleClass="grid-text"/>-->
 
             <Button text="Browse"
                     GridPane.rowIndex="1"
@@ -65,7 +66,8 @@
 
             <ComboBox fx:id="localeComboBox"
                       GridPane.rowIndex="2"
-                      GridPane.columnIndex="1"/>
+                      GridPane.columnIndex="1"
+                      visibleRowCount="5"/>
 
         </GridPane>
     </VBox>
