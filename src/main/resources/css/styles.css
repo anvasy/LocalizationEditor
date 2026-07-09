@@ -28,15 +28,16 @@
     -fx-spacing: 20;
 }
 
-.button {
+.secondary-button {
     -fx-background-color: -button-color;
     -fx-text-fill: white;
     -fx-background-radius: 8;
 
     -fx-padding: 12 32;
+    -fx-cursor: hand;
 }
 
-.button:hover {
+.secondary-button:hover {
     -fx-background-color: -button-color-hover;
 }
 
@@ -85,6 +86,7 @@
     -fx-background-radius: 8;
 
     -fx-padding: 12 32;
+    -fx-cursor: hand;
 }
 
 .text-field {

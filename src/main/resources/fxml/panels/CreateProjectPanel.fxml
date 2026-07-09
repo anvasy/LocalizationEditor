@@ -57,6 +57,7 @@
             <Button text="Browse"
                     GridPane.rowIndex="1"
                     GridPane.columnIndex="1"
+                    styleClass="secondary-button"
                     onAction="#browseFolder"/>
 
             <Label text="Default Locale"

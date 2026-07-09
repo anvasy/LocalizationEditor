@@ -1,18 +1,22 @@
 package com.anvasy.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Data
-public class ProjectSettings {
+@NoArgsConstructor
+@AllArgsConstructor
+public class Project {
     private String projectName;
     private String directory;
     private Locale primaryLocale;
     private List<Locale> projectLocales;
 
-    public ProjectSettings(String projectName, Locale primaryLocale, String path) {
+    public Project(String projectName, Locale primaryLocale, String path) {
         this.projectName = projectName;
         this.primaryLocale = primaryLocale;
 

@@ -24,7 +24,7 @@
 
                 <Region HBox.hgrow="ALWAYS"/>
 
-                <Button text="✕"
+                <Button text="×"
                         onAction="#closeWindow"
                         styleClass="window-close-button"/>
             </HBox>

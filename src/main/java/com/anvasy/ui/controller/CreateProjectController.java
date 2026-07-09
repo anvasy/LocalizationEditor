@@ -1,6 +1,7 @@
 package com.anvasy.ui.controller;
 
 import com.anvasy.model.Locale;
+import com.anvasy.model.Project;
 import com.anvasy.service.ProjectLoader;
 import com.anvasy.utils.ProjectUtils;
 import javafx.beans.binding.Bindings;
@@ -55,7 +56,7 @@ public class CreateProjectController implements ControllerNavigator, Initializab
     }
 
     public void createProject() throws Exception {
-        new ProjectLoader().createProject(projectName.getText(), directory.getText(), localeComboBox.getValue()); //placeholder
+        Project project = ProjectLoader.createProject(projectName.getText(), directory.getText(), localeComboBox.getValue());
         primaryStage.close();
     }
 

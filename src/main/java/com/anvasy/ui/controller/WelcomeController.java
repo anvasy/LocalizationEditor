@@ -1,5 +1,6 @@
 package com.anvasy.ui.controller;
 
+import com.anvasy.ui.ViewManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -13,6 +14,7 @@ import java.io.IOException;
 @Slf4j
 public class WelcomeController {
 
+    private ViewManager viewManager;
     private Stage primaryStage;
 
     @FXML
@@ -25,27 +27,26 @@ public class WelcomeController {
         this.primaryStage = stage;
         showWelcome();
 
-        double xOffset = 0;
-        double yOffset = 0;
+        double[] coords = new double[2];
         titleBar.setOnMousePressed(event -> {
-            //xOffset = event.getSceneX();
-            //yOffset = event.getSceneY();
+            coords[0] = event.getSceneX();
+            coords[1] = event.getSceneY();
         });
 
         titleBar.setOnMouseDragged(event -> {
-            primaryStage.setX(event.getScreenX() - xOffset);
-            primaryStage.setY(event.getScreenY() - yOffset);
+            primaryStage.setX(event.getScreenX() - coords[0]);
+            primaryStage.setY(event.getScreenY() - coords[1]);
         });
     }
 
     @FXML
     public void showWelcome() {
-        loadSubView("/fxml/pane/MainPane.fxml");
+        loadSubView("/fxml/panels/MainPanel.fxml");
     }
 
     @FXML
     public void showCreateProject() {
-        loadSubView("/fxml/pane/CreateProjectPane.fxml");
+        loadSubView("/fxml/panels/CreateProjectPanel.fxml");
     }
 
     public void loadSubView(String path) {

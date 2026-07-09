@@ -29,10 +29,13 @@
                 <ColumnConstraints percentWidth="30"/>
             </columnConstraints>
 
-            <Label text="New Project"
-                   GridPane.rowIndex="0"
-                   GridPane.columnIndex="0"
-                   styleClass="grid-text"/>
+            <VBox GridPane.rowIndex="0"
+                  GridPane.columnIndex="0">
+                <Label text="New Project"
+                       styleClass="grid-text"/>
+                <Label text="Create a new project"
+                       styleClass="grid-text-sub"/>
+            </VBox>
 
             <Button text="Create"
                     GridPane.rowIndex="0"
@@ -43,15 +46,18 @@
             <Separator GridPane.rowIndex="1"
                        GridPane.columnSpan="2"/>
 
-            <Label text="Open Project"
-                   GridPane.rowIndex="2"
-                   GridPane.columnIndex="0"
-                   styleClass="grid-text"/>
+            <VBox GridPane.rowIndex="2"
+                  GridPane.columnIndex="0">
+                <Label text="Open Project"
+                       styleClass="grid-text"/>
+                <Label text="Choose a project-settings.json to open an existing project."
+                       styleClass="grid-text-sub"/>
+            </VBox>
 
             <Button text="Browse"
                     GridPane.rowIndex="2"
                     GridPane.columnIndex="1"
-                    styleClass="button"
+                    styleClass="secondary-button"
                     onAction="#openProject"/>
 
         </GridPane>
