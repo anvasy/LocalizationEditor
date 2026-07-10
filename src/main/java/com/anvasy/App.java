@@ -1,5 +1,7 @@
 package com.anvasy;
 
+import com.anvasy.ui.ViewManager;
+import com.anvasy.ui.context.View;
 import com.anvasy.ui.controller.WelcomeController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -19,17 +21,20 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader loader =
-                new FXMLLoader(getClass().getResource("/fxml/view/WelcomeView.fxml"));
+                new FXMLLoader(getClass().getResource(View.WELCOME.getFxmlPath()));
 
         Parent root = loader.load();
 
         WelcomeController controller = loader.getController();
-        controller.initialize(stage);
+        ViewManager viewManager = new ViewManager(stage, controller.getContentPane());
+        controller.setStage(stage);
 
         Scene scene = new Scene(root);
 
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(scene);
         stage.show();
+
+        viewManager.showMainWelcome();
     }
 }

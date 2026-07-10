@@ -38,6 +38,7 @@ public class ApplicationSettingsService {
             appSettings = mapper.readValue(SETTINGS_FILE.toFile(), ApplicationSettings.class);
         } else {
             appSettings = new ApplicationSettings();
+            save();
         }
     }
 

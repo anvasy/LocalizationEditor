@@ -2,6 +2,7 @@ package com.anvasy.ui.controller;
 
 import com.anvasy.model.Project;
 import com.anvasy.service.ProjectLoader;
+import com.anvasy.ui.ViewManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.stage.FileChooser;
@@ -9,17 +10,17 @@ import javafx.stage.Stage;
 
 import java.io.File;
 
-public class MainPaneController implements ControllerNavigator {
+public class MainPaneController implements ControllerInterface {
 
-    private WelcomeController welcomeController;
+    private ViewManager viewManager;
     private Stage primaryStage;
 
     @FXML
     public ListView recentProjects;
 
     @Override
-    public void setWelcomeController(WelcomeController welcomeController) {
-        this.welcomeController = welcomeController;
+    public void setViewManager(ViewManager viewManager) {
+        this.viewManager = viewManager;
     }
 
     @Override
@@ -28,7 +29,7 @@ public class MainPaneController implements ControllerNavigator {
     }
 
     public void showCreateProject() {
-        welcomeController.showCreateProject();
+        viewManager.showCreateProject();
     }
 
     public void openProject() throws Exception {
@@ -40,6 +41,6 @@ public class MainPaneController implements ControllerNavigator {
         File projectFile = fileChooser.showOpenDialog(primaryStage);
 
         Project project = ProjectLoader.openProject(projectFile);
-        primaryStage.close();
+        viewManager.showEditor(project);
     }
 }

@@ -2,55 +2,63 @@ package com.anvasy.ui;
 
 import com.anvasy.model.Project;
 import com.anvasy.ui.context.View;
-import com.anvasy.ui.controller.ControllerNavigator;
+import com.anvasy.ui.controller.ControllerInterface;
+import com.anvasy.ui.controller.EditorController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 
 @Slf4j
+@AllArgsConstructor
 public class ViewManager {
 
-    Stage stage;
+    private Stage welcomeStage;
+    private final StackPane contentPane;
 
-    public void setStage(Stage stage) {
-        this.stage = stage;
+    public void showWelcome() {
+        loadWelcomeSubView(View.WELCOME, contentPane);
     }
 
-    public void showWelcome(Pane pane) {
-        loadSubView(View.WELCOME, pane);
+    public void showMainWelcome() {
+        loadWelcomeSubView(View.MAIN_WELCOME, contentPane);
     }
 
-    public void showCreateProject(Pane pane) {
-        loadSubView(View.CREATE_PROJECT, pane);
+    public void showCreateProject() {
+        loadWelcomeSubView(View.CREATE_PROJECT, contentPane);
     }
 
-    public void showEditor(Project project) {
-        load(View.EDITOR);
+    public void showEditor(Project project) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(View.EDITOR.getFxmlPath()));
+        Parent root = loader.load();
+
+        EditorController controller = loader.getController();
+        controller.setProject(project);
+
+        Stage editorStage = new Stage();
+
+        editorStage.setScene(new Scene(root));
+        editorStage.setTitle(project.getProjectName());
+        editorStage.show();
+
+        welcomeStage.close();
     }
 
-    private void load(View view) {
-        try {
-            FXMLLoader loader =
-                    new FXMLLoader(getClass().getResource(view.getFxmlPath()));
-            Parent root = loader.load();
-            //contentPane.getChildren().setAll(root);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public void loadSubView(View view, Pane contentPane) {
+    private void loadWelcomeSubView(View view, Pane contentPane) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource(view.getFxmlPath()));
             Parent parent = loader.load();
 
             Object controller = loader.getController();
-            if (controller instanceof ControllerNavigator) {
-                ((ControllerNavigator) controller).setStage(stage);
+            if (controller instanceof ControllerInterface) {
+                ((ControllerInterface) controller).setViewManager(this);
+                ((ControllerInterface) controller).setStage(welcomeStage);
             }
 
             contentPane.getChildren().setAll(parent);

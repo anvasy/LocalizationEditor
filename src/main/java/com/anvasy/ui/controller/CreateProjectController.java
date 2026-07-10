@@ -3,6 +3,7 @@ package com.anvasy.ui.controller;
 import com.anvasy.model.Locale;
 import com.anvasy.model.Project;
 import com.anvasy.service.ProjectLoader;
+import com.anvasy.ui.ViewManager;
 import com.anvasy.utils.ProjectUtils;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
@@ -20,9 +21,9 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CreateProjectController implements ControllerNavigator, Initializable {
+public class CreateProjectController implements ControllerInterface, Initializable {
 
-    private WelcomeController welcomeController;
+    private ViewManager viewManager;
     private Stage primaryStage;
 
     @FXML
@@ -35,8 +36,8 @@ public class CreateProjectController implements ControllerNavigator, Initializab
     private Button createButton;
 
     @Override
-    public void setWelcomeController(WelcomeController welcomeController) {
-        this.welcomeController = welcomeController;
+    public void setViewManager(ViewManager viewManager) {
+        this.viewManager = viewManager;
     }
 
     @Override
@@ -45,7 +46,7 @@ public class CreateProjectController implements ControllerNavigator, Initializab
     }
 
     public void showWelcome() {
-        welcomeController.showWelcome();
+        viewManager.showMainWelcome();
     }
 
     public void browseFolder() {
@@ -57,7 +58,7 @@ public class CreateProjectController implements ControllerNavigator, Initializab
 
     public void createProject() throws Exception {
         Project project = ProjectLoader.createProject(projectName.getText(), directory.getText(), localeComboBox.getValue());
-        primaryStage.close();
+        viewManager.showEditor(project);
     }
 
     @Override

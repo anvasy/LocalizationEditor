@@ -20,6 +20,7 @@ dependencies {
 
     implementation(platform("com.fasterxml.jackson:jackson-bom:2.22.0"))
     implementation("org.slf4j:slf4j-api:1.7.25")
+    implementation("ch.qos.logback:logback-classic:1.5.37")
 
     // Core Jackson libraries
     implementation("com.fasterxml.jackson.core:jackson-databind")
