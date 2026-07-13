@@ -1,8 +1,10 @@
 package com.anvasy.ui;
 
 import com.anvasy.model.Project;
+import com.anvasy.service.ApplicationSettingsService;
 import com.anvasy.ui.context.View;
-import com.anvasy.ui.controller.ControllerInterface;
+import com.anvasy.ui.controller.MainPanelController;
+import com.anvasy.ui.controller.ViewAware;
 import com.anvasy.ui.controller.EditorController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,6 +23,8 @@ public class ViewManager {
 
     private Stage welcomeStage;
     private final StackPane contentPane;
+
+    private ApplicationSettingsService appSettingsService;
 
     public void showWelcome() {
         loadWelcomeSubView(View.WELCOME, contentPane);
@@ -56,9 +60,10 @@ public class ViewManager {
             Parent parent = loader.load();
 
             Object controller = loader.getController();
-            if (controller instanceof ControllerInterface) {
-                ((ControllerInterface) controller).setViewManager(this);
-                ((ControllerInterface) controller).setStage(welcomeStage);
+            if (controller instanceof ViewAware) {
+                ((ViewAware) controller).setViewManager(this);
+                ((ViewAware) controller).setStage(welcomeStage);
+                ((ViewAware) controller).setAppSettingsService(appSettingsService);
             }
 
             contentPane.getChildren().setAll(parent);

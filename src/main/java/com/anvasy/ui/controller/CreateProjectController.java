@@ -2,6 +2,7 @@ package com.anvasy.ui.controller;
 
 import com.anvasy.model.Locale;
 import com.anvasy.model.Project;
+import com.anvasy.service.ApplicationSettingsService;
 import com.anvasy.service.ProjectLoader;
 import com.anvasy.ui.ViewManager;
 import com.anvasy.utils.ProjectUtils;
@@ -21,7 +22,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CreateProjectController implements ControllerInterface, Initializable {
+public class CreateProjectController implements ViewAware, Initializable {
 
     private ViewManager viewManager;
     private Stage primaryStage;
@@ -35,6 +36,8 @@ public class CreateProjectController implements ControllerInterface, Initializab
     @FXML
     private Button createButton;
 
+    private ApplicationSettingsService appSettingsService;
+
     @Override
     public void setViewManager(ViewManager viewManager) {
         this.viewManager = viewManager;
@@ -43,6 +46,11 @@ public class CreateProjectController implements ControllerInterface, Initializab
     @Override
     public void setStage(Stage primaryStage) {
         this.primaryStage = primaryStage;
+    }
+
+    @Override
+    public void setAppSettingsService(ApplicationSettingsService appSettingsService) {
+        this.appSettingsService = appSettingsService;
     }
 
     public void showWelcome() {
@@ -58,6 +66,7 @@ public class CreateProjectController implements ControllerInterface, Initializab
 
     public void createProject() throws Exception {
         Project project = ProjectLoader.createProject(projectName.getText(), directory.getText(), localeComboBox.getValue());
+        appSettingsService.addRecentProject(project.getDirectory());
         viewManager.showEditor(project);
     }
 

@@ -11,7 +11,7 @@
 
 <VBox xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.anvasy.ui.controller.MainPaneController"
+      fx:controller="com.anvasy.ui.controller.MainPanelController"
       alignment="TOP_CENTER" spacing="20">
 
     <padding>
@@ -64,11 +64,12 @@
     </VBox>
 
     <VBox spacing="10">
-        <padding>
-            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-        </padding>
+<!--        <padding>-->
+<!--            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>-->
+<!--        </padding>-->
         <Label text="Recent Projects:"/>
-        <ListView fx:id="recentProjects" prefHeight="200"/>
+        <ListView fx:id="recentProjects" prefHeight="300"
+                  onMouseClicked="#openRecentProject"/>
     </VBox>
 
 </VBox>

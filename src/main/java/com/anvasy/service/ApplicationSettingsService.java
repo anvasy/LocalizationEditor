@@ -19,6 +19,13 @@ public class ApplicationSettingsService {
     private static final Path SETTINGS_FILE = APP_DIRECTORY.resolve("settings.json");
 
     public List<String> getRecentProjects() {
+        if (appSettings == null) {
+            try {
+                load();
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
        return appSettings.getRecentProjects();
     }
 

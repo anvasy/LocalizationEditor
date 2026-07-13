@@ -34,6 +34,17 @@ public class ProjectLoader {
         }
     }
 
+    public static Project openProject(String directory) throws Exception {
+        Path path = Paths.get(directory + "project-settings.json");
+        try {
+            Project project = mapper.readValue(Files.readString(path), Project.class);
+            createFolderStructure(directory);
+            return project;
+        } catch (IOException e) {
+            throw new Exception("Failed to read settings file: ", e);
+        }
+    }
+
     private static void createFolderStructure(String folder) throws Exception {
         Path path = Paths.get(folder + "\\languages");
         createFolderStructure(path);
