@@ -3,7 +3,6 @@ package com.anvasy.service;
 import com.anvasy.model.Locale;
 import com.anvasy.model.Project;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.extern.slf4j.Slf4j;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,7 +10,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-@Slf4j
 public class ProjectLoader {
 
     public static ObjectMapper mapper = new ObjectMapper();
@@ -58,9 +56,9 @@ public class ProjectLoader {
     private static void createFolderStructure(Path path) throws Exception {
         try {
             Files.createDirectories(path);
-            log.info("Directories created successfully.");
+            //log.info("Directories created successfully.");
         } catch (IOException e) {
-            log.error("Failed to create directory: ", e);
+            //log.error("Failed to create directory: ", e);
             throw new Exception("Failed to create folder structure.");
         }
     }
@@ -71,9 +69,9 @@ public class ProjectLoader {
             File outputFile = new File(settings.getDirectory() + "project-settings.json");
             mapper.writeValue(outputFile, settings);
 
-            log.info("Project settings for {} created successfully.", projectName);
+            //log.info("Project settings for {} created successfully.", projectName);
         } catch (IOException e) {
-            log.error("Failed to create project settings: ", e);
+            //log.error("Failed to create project settings: ", e);
             throw new Exception("Failed to create project settings.");
         }
 
@@ -84,7 +82,7 @@ public class ProjectLoader {
         try {
             Files.createFile(Paths.get(path + "languages\\" + locale.code() + ".json"));
         } catch (IOException e) {
-            log.error("Failed to create locale file for {}: ", locale.code(), e);
+            //log.error("Failed to create locale file for {}: ", locale.code(), e);
             throw new Exception("Failed to create locale file.");
         }
     }

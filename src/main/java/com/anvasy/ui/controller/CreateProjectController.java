@@ -4,7 +4,7 @@ import com.anvasy.model.Locale;
 import com.anvasy.model.Project;
 import com.anvasy.service.ApplicationSettingsService;
 import com.anvasy.service.ProjectLoader;
-import com.anvasy.ui.ViewManager;
+import com.anvasy.ui.config.ViewManager;
 import com.anvasy.utils.ProjectUtils;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
@@ -16,16 +16,15 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.DirectoryChooser;
-import javafx.stage.Stage;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class CreateProjectController implements ViewAware, Initializable {
-
-    private ViewManager viewManager;
-    private Stage primaryStage;
+@Component
+public class CreateProjectController implements Initializable {
 
     @FXML
     private TextField projectName;
@@ -36,20 +35,13 @@ public class CreateProjectController implements ViewAware, Initializable {
     @FXML
     private Button createButton;
 
+    private ViewManager viewManager;
     private ApplicationSettingsService appSettingsService;
 
-    @Override
-    public void setViewManager(ViewManager viewManager) {
+    @Lazy
+    public CreateProjectController(ViewManager viewManager,
+                                   ApplicationSettingsService appSettingsService) {
         this.viewManager = viewManager;
-    }
-
-    @Override
-    public void setStage(Stage primaryStage) {
-        this.primaryStage = primaryStage;
-    }
-
-    @Override
-    public void setAppSettingsService(ApplicationSettingsService appSettingsService) {
         this.appSettingsService = appSettingsService;
     }
 
@@ -59,7 +51,7 @@ public class CreateProjectController implements ViewAware, Initializable {
 
     public void browseFolder() {
         DirectoryChooser directoryChooser = new DirectoryChooser();
-        File selectedDirectory = directoryChooser.showDialog(primaryStage);
+        File selectedDirectory = directoryChooser.showDialog(viewManager.getPrimaryStage());
 
         directory.setText(selectedDirectory.getAbsolutePath());
     }

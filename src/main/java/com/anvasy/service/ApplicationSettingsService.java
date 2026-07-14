@@ -2,14 +2,14 @@ package com.anvasy.service;
 
 import com.anvasy.model.ApplicationSettings;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
-@Slf4j
+@Service
 public class ApplicationSettingsService {
 
     private ApplicationSettings appSettings;

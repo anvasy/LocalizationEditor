@@ -10,9 +10,7 @@ import java.util.List;
 import com.anvasy.model.Locale;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j  //TODO: configure log file
 public class ProjectUtils {
 
     public static boolean validateFileName(Path file) {
@@ -36,7 +34,7 @@ public class ProjectUtils {
             return mapper.readValue(jsonContent, new TypeReference<>() {
             });
         } catch (IOException e) {
-            log.error("Exception when reading from locale.json", e);
+            //log.error("Exception when reading from locale.json", e);
         }
 
         return new ArrayList<>();
