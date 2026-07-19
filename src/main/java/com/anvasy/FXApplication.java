@@ -19,7 +19,8 @@ public class FXApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        viewManager = applicationContext.getBean(ViewManager.class, primaryStage);
+        viewManager = applicationContext.getBean(ViewManager.class);
+        viewManager.setWelcomeStage(primaryStage);
         viewManager.showWelcome();
     }
 

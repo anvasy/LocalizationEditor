@@ -22,4 +22,10 @@ public class FxmlLoader {
         loader.setLocation(getClass().getResource(fxmlPath));
         return loader.load();
     }
+
+    public FXMLLoader getLoader(String path) {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+        loader.setControllerFactory(context::getBean);
+        return loader;
+    }
 }

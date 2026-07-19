@@ -27,7 +27,7 @@ public class WelcomeController implements Initializable {
     private HBox titleBar;
 
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Stage primaryStage = viewManager.getPrimaryStage();
+        Stage primaryStage = viewManager.getWelcomeStage();
 
         double[] coords = new double[2];
         titleBar.setOnMousePressed(event -> {
@@ -40,13 +40,13 @@ public class WelcomeController implements Initializable {
             primaryStage.setY(event.getScreenY() - coords[1]);
         });
 
-        viewManager.setContentPane(contentPane); //TODO: fix?
+        viewManager.setContentPane(contentPane);
         viewManager.showMainWelcome();
     }
 
     @FXML
     public void closeWindow() {
-        viewManager.getPrimaryStage().close();
+        viewManager.getWelcomeStage().close();
     }
 
 }

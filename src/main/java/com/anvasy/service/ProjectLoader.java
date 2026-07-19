@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProjectLoader {
 
@@ -41,6 +43,13 @@ public class ProjectLoader {
         } catch (IOException e) {
             throw new Exception("Failed to read settings file: ", e);
         }
+    }
+
+    public static List<String> getLocaleFiles() {
+        List<String> test = new ArrayList<>();
+        test.add("en-US");
+        return test;
+        //return new ArrayList<>();
     }
 
     private static void createFolderStructure(String folder) throws Exception {

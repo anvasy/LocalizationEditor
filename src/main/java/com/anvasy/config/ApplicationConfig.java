@@ -2,7 +2,6 @@ package com.anvasy.config;
 
 import com.anvasy.ui.config.FxmlLoader;
 import com.anvasy.ui.config.ViewManager;
-import javafx.stage.Stage;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
@@ -18,7 +17,7 @@ public class ApplicationConfig {
 
     @Bean
     @Lazy
-    public ViewManager viewManager(Stage stage) {
-        return new ViewManager(fxmlLoader, stage);
+    public ViewManager viewManager() {
+        return new ViewManager(fxmlLoader);
     }
 }

@@ -1,4 +1,4 @@
-package com.anvasy.ui.context;
+package com.anvasy.ui.model;
 
 public class EditorContext {
 

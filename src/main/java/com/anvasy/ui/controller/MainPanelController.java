@@ -9,7 +9,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListView;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
@@ -24,8 +23,8 @@ public class MainPanelController implements Initializable {
     @FXML
     public ListView<String> recentProjects;
 
-    private ViewManager viewManager;
-    private ApplicationSettingsService appSettingsService;
+    private final ViewManager viewManager;
+    private final ApplicationSettingsService appSettingsService;
 
     @Lazy
     public MainPanelController(ViewManager viewManager,
@@ -50,7 +49,7 @@ public class MainPanelController implements Initializable {
         FileChooser.ExtensionFilter filter = new FileChooser.ExtensionFilter("JSON files (*.json)", "*.json");
         fileChooser.getExtensionFilters().add(filter);
 
-        File projectFile = fileChooser.showOpenDialog(viewManager.getPrimaryStage());
+        File projectFile = fileChooser.showOpenDialog(viewManager.getWelcomeStage());
 
         Project project = ProjectLoader.openProject(projectFile);
         appSettingsService.addRecentProject(project.getDirectory());
@@ -59,7 +58,7 @@ public class MainPanelController implements Initializable {
     }
 
     //TODO add removed project check
-    public void openRecentProject(MouseEvent mouseEvent) throws Exception {
+    public void openRecentProject() throws Exception {
         Project project = ProjectLoader.openProject(recentProjects.getSelectionModel().getSelectedItem());
         appSettingsService.addRecentProject(project.getDirectory());
 

@@ -1,11 +1,12 @@
 package com.anvasy.ui.config;
 
 import com.anvasy.model.Project;
-import com.anvasy.ui.context.View;
+import com.anvasy.ui.model.View;
 import com.anvasy.ui.controller.EditorController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -19,15 +20,16 @@ import java.io.IOException;
 public class ViewManager {
 
     @Getter
-    private final Stage primaryStage;
+    @Setter
+    private Stage welcomeStage;
+    @Getter
+    private Stage editorStage;
     private final FxmlLoader fxmlLoader;
 
     @Setter
     private Pane contentPane;
 
-    public ViewManager(FxmlLoader fxmlLoader,
-                       Stage primaryStage) {
-        this.primaryStage = primaryStage;
+    public ViewManager(FxmlLoader fxmlLoader) {
         this.fxmlLoader = fxmlLoader;
     }
 
@@ -36,11 +38,11 @@ public class ViewManager {
     }
 
     public void showMainWelcome() {
-        loadWelcomeSubView(View.MAIN_WELCOME, this.contentPane);
+        loadSubView(View.MAIN_WELCOME, this.contentPane);
     }
 
     public void showCreateProject() {
-        loadWelcomeSubView(View.CREATE_PROJECT, this.contentPane);
+        loadSubView(View.CREATE_PROJECT, this.contentPane);
     }
 
     private void switchScene(View view) {
@@ -48,9 +50,17 @@ public class ViewManager {
 
         Scene scene = new Scene(rootNode);
 
-        primaryStage.setScene(scene);
-        primaryStage.initStyle(StageStyle.UNDECORATED);
-        primaryStage.show();
+        welcomeStage.setScene(scene);
+        welcomeStage.initStyle(StageStyle.UNDECORATED);
+        welcomeStage.show();
+    }
+
+    public void showEditorTable(HBox editorBox) {
+        loadSubView(View.EDITOR_TABLE, editorBox);
+    }
+
+    public void showEmptyEditor(HBox editorBox) {
+        loadSubView(View.EDITOR_EMPTY, editorBox);
     }
 
     private Parent loadRootNode(String fxmlPath) {
@@ -63,29 +73,29 @@ public class ViewManager {
         return rootNode;
     }
 
-    private void loadWelcomeSubView(View view, Pane contentPane) {
+    private void loadSubView(View view, Pane contentPane) {
         try {
             Parent parent = fxmlLoader.load(view.getFxmlPath());
-
             contentPane.getChildren().setAll(parent);
         } catch (IOException e) {
-            //log.error("An exception during view loading: ", e);
+            throw new RuntimeException(e);
         }
     }
 
     public void showEditor(Project project) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(View.EDITOR.getFxmlPath()));
-        Parent root = loader.load();
+        editorStage = new Stage();
+
+        FXMLLoader loader = fxmlLoader.getLoader(View.EDITOR.getFxmlPath());
+        loader.load();
 
         EditorController controller = loader.getController();
         controller.setProject(project);
 
-        Stage editorStage = new Stage();
-
-        editorStage.setScene(new Scene(root));
+        editorStage.setScene(new Scene(loader.getRoot()));
         editorStage.setTitle(project.getProjectName());
+        editorStage.initStyle(StageStyle.UNDECORATED);
         editorStage.show();
 
-        primaryStage.close();
+        welcomeStage.close();
     }
 }

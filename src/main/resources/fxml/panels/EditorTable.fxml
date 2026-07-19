@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox fx:id="tableRoot"
+      alignment="CENTER_LEFT"
+      spacing="15.0"
+      styleClass="main-content"
+      xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.anvasy.ui.controller.EditorTableController">
+
+    <ScrollPane fitToHeight="true"
+                fitToWidth="true"
+                HBox.hgrow="ALWAYS">
+        <HBox fx:id="columnsContainer" spacing="15.0"/>
+    </ScrollPane>
+
+    <Button fx:id="btnAddColumn"
+            text="+"
+            onAction="#onAddColumnPressed"
+            prefWidth="50.0"
+            maxHeight="Infinity"/>
+</HBox>

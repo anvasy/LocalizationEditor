@@ -35,8 +35,8 @@ public class CreateProjectController implements Initializable {
     @FXML
     private Button createButton;
 
-    private ViewManager viewManager;
-    private ApplicationSettingsService appSettingsService;
+    private final ViewManager viewManager;
+    private final ApplicationSettingsService appSettingsService;
 
     @Lazy
     public CreateProjectController(ViewManager viewManager,
@@ -51,7 +51,7 @@ public class CreateProjectController implements Initializable {
 
     public void browseFolder() {
         DirectoryChooser directoryChooser = new DirectoryChooser();
-        File selectedDirectory = directoryChooser.showDialog(viewManager.getPrimaryStage());
+        File selectedDirectory = directoryChooser.showDialog(viewManager.getWelcomeStage());
 
         directory.setText(selectedDirectory.getAbsolutePath());
     }
